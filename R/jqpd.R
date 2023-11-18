@@ -83,6 +83,8 @@ bounded_params <- function(x, lower, upper, alpha = 0.1){
   params$delta <- delta
   params$lambda <- lambda
   params$k <- 0
+  params$hml <- H-L
+  params$hbl <- H/L
   params
 }
 
@@ -116,5 +118,7 @@ semibounded_params <- function(x, lower, alpha = 0.1){
   params$delta <- delta
   params$lambda <- lambda
   params$k <- k
+  params$hml <- H-L
+  params$hbl <- H/L
   params
 }

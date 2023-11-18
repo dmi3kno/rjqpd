@@ -49,7 +49,9 @@ quantile_bounded <- function(p, params){
   delta <- params$delta
   n <- params$n
   c <- params$c
-
+  hml <- params$hml
+  if (n == 0)
+    return(l + (u-l)*stats::pnorm(eta + 0.5*(hml)/c*stats::qnorm(p)) )
   l + (u-l)*stats::pnorm(eta + (lambda*sinh(delta*(stats::qnorm(p)+(n*c)))))
 }
 
@@ -61,6 +63,9 @@ quantile_semibounded <- function(p, params){
   delta <- params$delta
   n <- params$n
   c <- params$c
+
+  if (n == 0)
+    return(l + eta*exp(lambda*delta*stats::qnorm(p)) )
 
   l + eta*exp(lambda*sinh(asinh(delta*stats::qnorm(p))+asinh(n*c*delta)))
 }
